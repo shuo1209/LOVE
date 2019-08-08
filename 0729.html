@@ -1,0 +1,999 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	html,body,.wrap{
+		margin:0;
+		padding:0;
+		width: 100%;
+		height: 100%;
+	}
+	.wrap{
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		background: -webkit-linear-gradient(top, #EE00EE , #FFF); 
+		background: -o-linear-gradient(top,  #EE00EE, #FFF); 
+		background: -moz-linear-gradient(top,  #EE00EE, #FFF); 
+		background: linear-gradient(top,  #EE00EE, #FFF);
+		/*background:linear-gradient(180deg,#fff  40%,#FFAAD5 100%)*/
+	}
+	.heart{
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        animation: flicker 2s linear infinite;
+        transform: scale(0);
+    }
+
+    @keyframes flicker{
+    	0%{
+    		transform: scale(0);
+    	}
+    	50%{
+    		transform: scale(1);
+    	}
+    	100%{
+    		transform: scale(0);
+    	}
+    }
+    .heart::before,.heart::after{
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 30px;
+        background-color: red;
+        border-radius: 20px 20px 0 0;
+    }
+    .heart::after{
+        left: 8px;
+        transform: rotate(45deg);
+    }
+    .heart::before{
+        transform: rotate(-45deg);
+        box-shadow: -5px -5px 10px grey;
+    }
+
+	/**/
+	.main{
+		display: flex;
+		justify-content:center;
+		align-items:center;
+		width: 100%;
+		height:100%;
+	}
+	.main div{
+		width: 100px;
+		height: 100px;
+		
+		color: red;
+		font-size: 60px;
+		text-shadow: 5px 5px 5px black, 0px 0px 2px red, 2px 2px 3px green;
+		z-index: 10;
+
+	}
+	.main1 div{
+		color: #eb5b50;
+		animation: text_color 3s linear infinite alternate;
+	}
+	.main1 div:nth-child(2){
+		animation-delay: .5s;
+	}
+	.main1 div:nth-child(3){
+		animation-delay: 1s;
+	}
+	@keyframes text_color{
+		0%{
+			color: #eb5b50;
+		}
+		50%{
+			color: #fff;
+		}
+		100%{
+			color: #4169E1;
+		}
+	}
+
+	.com-heart{
+		position: absolute;
+
+	}
+	.heart-container{
+		z-index: 1;
+	}
+
+
+
+	/*pig 建议单独拆分*/
+	.pig-wrap{
+		display: flex;
+		width: 1080px;
+		height: 380px;
+	}
+	.pig{
+		position: relative;
+		width: 300px;
+		height: 380px;
+		margin-top: 80px;
+		/*border: 1px solid #ccc;*/
+	}
+	
+	.pig div{
+		position: absolute;
+	}
+	.pig-right>.tail_left{
+		width: 19px;
+	    height: 5px;
+	    top: 253px;
+    	right: 62px;
+	    border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+	    transform: rotate(-9deg);
+	    background-color: #ffbadf;
+	    z-index: 99;
+	}
+	
+	.pig-left>.tail_left{
+		width: 33px;
+	    height: 5px;
+	    top: 252px;
+	    left: 55px;
+	    border-radius: 0% 0% 100% 100%/ 50% 50% 50% 50%;
+	    transform: rotate(9deg);
+	    background-color: #ffbadf;
+	    z-index: 99;
+	}
+
+	/*.pig-right>.tail_left_blank {
+		width: 30px;
+	    height: 15px;
+	    top: 253px;
+	    right: 60px;
+	    border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+	    transform: rotate(-36deg);
+	    background-color: #fff;
+	    z-index: 99;
+	}*/
+	.pig-right>.tail_right {
+		width: 20px;
+	    height: 5px;
+	    top: 244px;
+	    right: 42px;
+	    border-radius: 0% 0% 51% 50%/ 0% 0% 100% 100%;
+	    transform: rotate(31deg);
+	    background-color: #ff67f5;
+	    z-index: 99;
+	    border: 5px solid #ffbadf;
+	    border-top-color: #ff67f5;
+	}
+	.pig-left>.tail_right {
+		width: 18px;
+	    height: 5px;
+	    top: 242px;
+	    left: 38px;
+	    border-radius: 0% 0% 51% 50%/ 0% 0% 100% 100%;
+	    /* transform: rotate(-9deg); */
+	    background-color: #ff67f5;
+	    z-index: 99;
+	    border: 5px solid #ffbadf;
+	    border-top-color: #ff67f5;
+	}
+	.pig-right>.tail_blank {
+		width: 14px;
+	    height: 21px;
+	    top: 230px;
+	    right: 39px;
+	    transform: rotate(34deg);
+	    background-color:#ff67f5;
+	    z-index: 99;
+	}
+	.pig-left>.tail_blank {
+		width: 14px;
+	    height: 21px;
+	    top: 227px;
+	    left: 39px;
+	    transform: rotate(34deg);
+	    background-color: #ff67f5;
+	    z-index: 99;
+	}
+	.pig-right>.tail_middle {
+		width: 7px;
+	    height: 10px;
+	    top: 235px;
+	    right: 51px;
+	    border: 5px solid #ffbadf;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: #ff67f5;
+	    z-index: 99;
+	}
+	.pig-left>.tail_middle {
+		width: 7px;
+	    height: 10px;
+	    top: 235px;
+	    left: 51px;
+	    border: 5px solid #ffbadf;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color:#ff67f5;
+	    z-index: 99;
+	}
+	.pig-right>.tail_circle {
+		width: 8px;
+	    height: 5px;
+	    top: 249px;
+	    right: 37px;
+	    border-radius: 36% 37% 62% 63%/ 99% 92% 90% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(-40deg);
+	}
+	.pig-left>.tail_circle {
+		width: 8px;
+	    height: 5px;
+	    top: 246px;
+	    left: 36px;
+	    border-radius: 36% 37% 62% 63%/ 99% 92% 90% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(40deg);
+	}
+	
+
+	.pig-right>.pig_shadow {
+		width: 240px;
+	    height: 47px;
+	    top: 310px;
+	    left: 30px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: rgba(171, 171, 171, 0.7);
+	    transform: rotate(-1deg);
+	}
+
+	.pig-left>.pig_shadow {
+		width: 240px;
+	    height: 47px;
+	    top: 310px;
+	    left: 30px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: rgba(171, 171, 171, 0.7);
+	    transform: rotate(-1deg);
+	}
+	.pig-right>.left_foot{
+		width: 11px;
+	    height: 52px;
+	    top: 270px;
+	    left: 100px;
+	    border-radius: 100% 100% 100% 100%/ 50% 50% 21% 20%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	}
+	.pig-left>.left_foot{
+		width: 11px;
+	    height: 52px;
+	    top: 270px;
+	    left: 100px;
+	    border-radius: 100% 100% 100% 100%/ 50% 50% 21% 20%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	}
+	.pig-right>.right_foot,.pig-left>.right_foot {
+		left: 190px;
+	}
+	.pig-right>.left_shoes {
+	    width: 31px;
+	    height: 11px;
+	    top: 313px;
+	    left: 80px;
+	    border-radius: 58% 187% 180% 50%/ 130% 123% 113% 100%;
+	    background-color: #000;
+	    z-index: 99;
+	    transform: rotate(0deg);
+	}
+
+	.pig-left>.left_shoes {
+	    width: 31px;
+	    height: 11px;
+	    top: 313px;
+	    left: 100px;
+	    border-radius: 187% 58% 50% 180%/ 123% 130% 110% 113%;
+	    background-color: #000;
+	    z-index: 99;
+	    transform: rotate(0deg);
+	}
+	.pig-right>.right_shoes,.pig-left>.right_shoes{
+		left: 190px;
+	}
+	.pig-right>.right_shoes{
+		left: 172px;
+	}
+	.pig-right .hand_left_top,.pig-left .hand_left_top{
+		width: 28px;
+	    height: 9px;
+	    top: 185px;
+	    left: 38px;
+	    border-radius: 100% 100% 100% 35%/ 100% 90% 16% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	}
+	.pig-right .hand_left_bottom,.pig-left .hand_left_bottom{
+		width: 20px;
+	    height: 9px;
+	    top: 207px;
+    	left: 54px;
+	    border-radius: 60% 59% 65% 90%/ 100% 90% 89% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(98deg);
+	}
+	.pig-right .hand_left_middle,.pig-left .hand_left_middle{
+		width: 78px;
+	    height: 12px;
+	    top: 185px;
+	    left: 33px;
+	    border-radius: 100% 100% 100% 17%/ 100% 90% 16% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(-35deg);
+	}
+
+	.pig-right>.pig_body_bottom,.pig-left>.pig_body_bottom{
+		width: 135px;
+	    height: 126px;
+	    top: 138px;
+	    left: 75px;
+	    border: 6px solid #e33b32;
+	    border-radius: 50% 50% 50% 50%/ 100% 100% 0% 0%;
+	    background-color: #eb5b50;
+	    z-index: 199;
+	}
+	.pig-left>.pig_body_bottom{
+		border: 6px solid #3A5FCD;
+		border-radius: 50% 50% 50% 50% / 100% 100% 100% 100%;
+		background: #4169E1;
+	}
+	.pig-right .hand_right_top,.pig-left .hand_right_top{
+		width: 28px;
+	    height: 10px;
+	    top: 185px;
+	    left: 238px;
+	    border-radius: 100% 100% 15% 17%/ 99% 92% 90% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(-7deg);
+	}
+	.pig-right .hand_right_bottom,.pig-left .hand_right_bottom{
+		width: 28px;
+	    height: 11px;
+	    top: 204px;
+	    left: 235px;
+	    border-radius: 100% 100% 62% 17%/ 99% 92% 90% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(69deg);
+	}
+
+	.pig-right .hand_right_middle,.pig-left .hand_right_middle{
+	    width: 79px;
+	    height: 11px;
+	   	top: 185px;
+	    left: 195px;
+	    border-radius: 100% 100% 15% 17%/ 99% 92% 90% 90%;
+	    background-color: #ffbadf;
+	    z-index: 99;
+	    transform: rotate(28deg);
+	}
+
+	.left_eye, .right_eye, .face, .mouth {
+	    z-index: 204;
+	}
+	.face {
+		width: 29px;
+	    height: 39px;
+	    top: 60px;
+	    left: 155px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: #ff96ce;
+	    transform: rotate(26deg);
+	}
+	.pig-left .face{
+		left: 101px;
+		transform: rotate(-26deg);
+	}
+	.pig_head {
+		width: 205px;
+    	height: 140px;
+	    /*top: 33px;
+	    left: 50px;*/
+	    top: 10px;
+	    left: 13px;
+	    border-radius: 95% 50% 50% 50%/ 87% 80% 68% 50%;
+	    border: 6px solid #ef96c2;
+	    background-color: #ffb3da;
+	    transform: rotate(40deg);
+	    z-index: 200;
+	    box-sizing: border-box;
+	}
+
+	.pig-left .pig_head {
+		width: 205px;
+    	height: 140px;
+	    /*top: 33px;
+	    left: 50px;*/
+	    top: 10px;
+	    left: 73px;
+	    border-radius: 50% 95% 50% 50%/ 80% 87% 50% 68%;
+	    border: 6px solid #ef96c2;
+	    background-color: #ffb3da;
+	    transform: rotate(-40deg);
+	    z-index: 200;
+	    box-sizing: border-box;
+	}
+
+	.pig-right .ear_left,.pig-left .ear_left {
+	    width: 24px;
+    	height: 58px;
+    	top: -16px;
+    	left: 129px;
+	    border: 6px solid #ef96c2;
+	    border-radius: 50% 50% 50% 50%/ 35% 40% 50% 50%;
+	    background-color: #ffb3da;
+	    z-index: 99;
+	    transform: rotate(18deg);
+	}
+	.pig-left .ear_left{
+		transform: rotate(-18deg);
+	}
+	.pig-right .ear_right ,.pig-left .ear_right{
+		width: 24px;
+    	height: 68px;
+    	top: 9px;
+    	left: 167px;
+	    border: 6px solid #ef96c2;
+	    border-radius: 50% 50% 50% 50%/ 35% 40% 50% 50%;
+	    background-color: #ffb3da;
+	    z-index: 99;
+	    transform: rotate(36deg);
+	}
+	.pig-left .ear_right{
+		left: 100px;
+		transform: rotate(-36deg);
+	}
+	.pig-right .pig_head_white_left_bottom,.pig-left .pig_head_white_left_bottom{
+	    width: 175px;
+	    height: 86px;
+	    bottom: -16px;
+	    left: -35px;
+	    background: -webkit-linear-gradient(top,  #ff00eb, #ff3cf1);
+	    box-sizing: border-box;
+	}
+	.pig-left .pig_head_white_left_bottom {
+	   left: 55px;
+       bottom: -6px;
+	}
+	.pig-right .pig_nose,.pig-left .pig_nose{
+		width: 40px;
+	    height: 62px;
+	    top: 1px;
+	    left: 31px;
+	    border-radius: 72% 72% 72% 72%/ 72% 72% 72% 72%;
+	    border: 6px solid #ef96c2;
+	    background-color: #ffb3da;
+	    transform: rotate(36deg);
+	    z-index: 203;
+	    box-sizing: border-box;
+	}
+	.pig-left .pig_nose{
+		left: 218px;
+		transform: rotate(-36deg);
+	}
+	.pig-right .pig_jaw,.pig-left .pig_jaw{
+		width: 82px;
+	    height: 85px;
+	    top: 74px;
+	    left: 64px;
+	    border-radius: 0% 0% 0% 76%/ 0% 0% 0% 74%;
+	    border: 6px solid #ef96c2;
+	    background-color: #ffb3da;
+	    transform: rotate(22deg);
+	    z-index: 200;
+	    box-sizing: border-box;
+	    border-top-color: #ffb3da;
+	    border-right-color: #ffb3da;
+	}
+	.pig-left .pig_jaw{
+	    border-color: #ef96c2 #ef96c2 #ef96c2 #ffb3da;
+	    border-radius: 0% 0% 76% 0%/ 0% 0% 76% 0%;
+		left: 141px;
+		transform: rotate(-22deg);
+	}
+	.pig-right  .pig_jaw_right,.pig-left .pig_jaw_right{
+		width: 13px;
+	    height: 6px;
+	    background-color: #ef96c2;
+	    top: 164px;
+	    left: 120px;
+	    transform: rotate(19deg);
+	    z-index: 200;
+	}
+	.pig-left  .pig_jaw_right{
+		left: 154px;
+		transform: rotate(-19deg);
+	}
+	.pig-right .pig_nose_bottom,.pig-left .pig_nose_bottom {
+		width: 75px;
+	    height: 8px;
+	    top: 67px;
+	    left: 20px;
+	    border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+	    border: 6px solid #ef96c2;
+	    background-color: #ffb3da;
+	    transform: rotate(35deg);
+	    z-index: 202;
+	    box-sizing: border-box;
+	    border-top-color: #ffb3da;
+	}
+	.pig-left .pig_nose_bottom{
+		left: 195px;
+		transform: rotate(-35deg);
+	}
+	.pig-right .pig_head_white_left_top,.pig-left .pig_head_white_left_top{
+	    top: 36px;
+	    width: 100px;
+	    height: 53px;
+	    background-color: #ffb3da;
+	    box-sizing: border-box;
+	    left: 49px;
+	    transform: rotate(34deg);
+	    z-index: 203;
+	}
+	.pig-left .pig_head_white_left_top{
+		left: 124px;
+    	top: 41px;
+    	width: 129px;
+		transform: rotate(-34deg);
+	}
+	.pig-right  .nose_kong_left,.pig-left .nose_kong_left{
+		width: 10px;
+	    height: 10px;
+	    top: 21px;
+	    left: 41px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: #da6c9b;
+	    z-index: 204;
+	}
+	.pig-left .nose_kong_left{
+		left: 223px;
+	}
+	.pig-right .nose_kong_right,.pig-left .nose_kong_right{
+		width: 10px;
+	    height: 10px;
+	    top: 23px;
+	    left: 55px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    background-color: #da6c9b;
+	    z-index: 204;
+	}
+	.pig-left .nose_kong_right{
+		left: 237px;
+	}
+	.pig-right .left_eye_bg,.pig-left .left_eye_bg{
+		width: 20px;
+	    height: 20px;
+	    top: 20px;
+	    left: 93px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #fff;
+	    background-color: #fff;
+	    z-index: 101;
+	    box-sizing: border-box;
+	}
+	.pig-left .left_eye_bg{
+		left: 160px;
+	}
+	.pig-right .right_eye_bg,.pig-left .right_eye_bg{
+		width: 20px;
+	    height: 20px;
+	    top: 35px;
+	    left: 125px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #fff;
+	    background-color: #fff;
+	    z-index: 101;
+	    box-sizing: border-box;
+	}
+	.pig-left .right_eye_bg{
+		left: 127px;
+    	top: 39px;
+	}
+	.pig-right .left_eye_ball,.pig-left .left_eye_ball{
+		width: 6px;
+	    height: 6px;
+	    top: 21px;
+	    left: 93px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #000;
+	    background-color: #000;
+	    z-index: 201;
+	    box-sizing: border-box;
+	    animation: eys_a 2s infinite alternate;
+	}
+	.pig-left .left_eye_ball{
+		 animation:none;
+		 left: 163px;
+		  animation: eys_d 2s infinite alternate;
+	}
+	@keyframes eys_d{
+
+		0% {
+			 left: 163px;
+			 top: 21px;
+		}
+		100% {
+			left: 164px;
+			top: 23px;
+		}
+	}
+	.pig-right .right_eye_ball,.pig-left .right_eye_ball{
+		width: 6px;
+	    height: 6px;
+	    top: 36px;
+	    left: 125px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #000;
+	    background-color: #000;
+	    z-index: 201;
+	    box-sizing: border-box;
+	    animation: eys_b 2s infinite alternate;
+	}
+	@keyframes eys_b{
+
+		0% {
+			 left: 125px;
+			 top: 36px;
+		}
+		100% {
+			left: 127px;
+			top: 38px;
+		}
+	}
+	.pig-left .right_eye_ball{
+		 animation: eys_c 2s infinite alternate;
+		top: 41px;
+	    left: 132px;
+	}
+	@keyframes eys_c{
+
+		0% {
+			 left: 132px;
+			 top: 41px;
+		}
+		100% {
+			left: 133px;
+			top: 42px;
+		}
+	}
+	@keyframes eys_a{
+
+		0% {
+			 left: 93px;
+			 top: 21px;
+		}
+		100% {
+			left: 95px;
+			top: 23px;
+		}
+	}
+
+	
+	.pig-right .left_eye_border,.pig-left .left_eye_border{
+		width: 32px;
+	    height: 32px;
+	    top: 14px;
+	    left: 86px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #ef96c2;
+	    background-color: transparent;
+	    z-index: 201;
+	    box-sizing: border-box;
+	}
+
+
+	.pig-left .left_eye_border{
+		 left: 154px;
+	}
+	.pig-right .right_eye_border,.pig-left .right_eye_border{
+		width: 32px;
+	    height: 32px;
+	    top: 29px;
+	    left: 118px;
+	    border-radius: 50% 50% 50% 50%/ 50% 50% 50% 50%;
+	    border: 6px solid #ef96c2;
+	    background-color: transparent;
+	    z-index: 201;
+	    box-sizing: border-box;
+	}
+	.pig-left .right_eye_border{
+		top: 34px;
+   		left: 121px;
+	}
+	
+	.pig-right .mouth_bottom,.pig-left .mouth_bottom{
+	    width: 70px;
+	    height: 38px;
+	    top: 110px;
+	    left: 85px;
+	    border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+	    border: 6px solid #d44b81;
+	    background-color: #000;
+	    z-index: 101;
+	    box-sizing: border-box;
+	    transform: rotate(19deg);
+	}
+	.pig-left .mouth_bottom{
+		left: 130px;
+		transform: rotate(-19deg);
+	}
+	.pig-right .mouth_middle,.pig-left .mouth_middle{
+		width: 69px;
+	    height: 27px;
+	    top: 105px;
+	    left: 90px;
+	    border-radius: 0% 0% 50% 50%/ 0% 0% 100% 100%;
+	    border: 6px solid #d44b81;
+	    background-color: #ffb3da;
+	    z-index: 201;
+	    box-sizing: border-box;
+	    transform: rotate(19deg);
+	    border-top-color: #ffb3da;
+	}
+	.pig-left .mouth_middle{
+		left: 127px;
+		transform: rotate(-19deg);
+	}
+	.pig-right .mouth_top,.pig-left .mouth_top{
+	    width: 100px;
+	    height: 66px;
+	    top: 63px;
+	    left: 83px;
+	    border-radius: 50% 50% 50% 50%/ 0% 0% 100% 100%;
+	    background-color: #ffb3da;
+	    z-index: 201;
+	    transform: rotate(13deg);
+	}
+	.pig-left .mouth_top{
+		left: 104px;
+		transform: rotate(-13deg);
+	}
+	
+	.pig-text{
+		display: flex;
+		margin:60px 150px;
+	}
+	.wrap_text{
+			margin: 20px;
+			height: 280px;
+			width: 40px;
+			line-height: 40px;
+			font-size: 30px;
+			word-break: break-all;
+		    word-wrap: break-word;
+			background-image: -webkit-linear-gradient(top,#eb5b50,#FFEC8B 25%,#FFC125 50%,#FFA500 75%,#4169E1);
+			-webkit-text-fill-color:transparent;
+			-webkit-background-clip: text;
+        	-webkit-background-size: 100% 200%;
+      		-webkit-animation: text-change 4s infinite linear;
+		}
+		
+		@-webkit-keyframes text-change {
+	         0%{ background-position: 0 0;}
+	         100% { background-position:0 -100%;}
+	    }
+</style>
+<body>
+	<div class="wrap">
+		<div class="heart-container" id="all_h"></div>
+
+		<!-- pig -->
+		<div class="pig-wrap">
+			<div class="pig pig-left">
+				<div class="tail_left"></div>
+				<div class="tail_right"></div>
+				<div class="tail_blank"></div>
+				<div class="tail_middle"></div>
+				<div class="tail_circle"></div>
+
+				<div class="pig_shadow"></div>
+
+				<div class="left_foot"></div>
+				<div class="left_foot right_foot"></div>
+
+				<div class="left_shoes"></div>
+				<div class="left_shoes right_shoes"></div>
+
+				<div>
+					<div class="hand_left_top"></div>
+					<div class="hand_left_bottom"></div>
+					<div class="hand_left_middle"></div>
+				</div>
+
+				<div class="pig_body_bottom"></div>
+
+				<div>
+					<div class="hand_right_top"></div>
+					<div class="hand_right_bottom"></div>
+					<div class="hand_right_middle"></div>
+				</div>
+
+				<div>
+					<div class="ear_left"></div>
+					<div class="ear_right"></div>
+
+					<div class="pig_head">
+						<div class="pig_head_white_left_bottom"></div>
+			        </div>
+
+
+			        <div class="pig_head_white_left_top"></div>
+
+			        <div class="pig_nose"></div>
+
+			        <div class="pig_jaw"></div>
+			        <div class="pig_jaw_right"></div>
+			        <div class="pig_nose_bottom"></div>
+
+			        <div class="nose_kong_left"></div>
+					<div class="nose_kong_right"></div>
+
+
+					<div class="left_eye">
+						<div class="left_eye_bg"></div>
+						<div class="left_eye_ball"></div>
+						<div class="left_eye_border"></div>
+					</div>
+
+					<div class="right_eye">
+						<div class="right_eye_bg"></div>
+						<div class="right_eye_ball"></div>
+						<div class="right_eye_border"></div>
+					</div>
+
+					<div class="mouth">
+						<div class="mouth_bottom"></div>
+						<div class="mouth_middle"></div>
+						<div class="mouth_top"></div>
+					</div>
+
+					<div class="face"></div>
+				</div>
+
+			</div>
+			<div class="pig-text">
+				<div class="wrap_text">即许一人以偏爱</div>
+				<div class="wrap_text">愿尽余生之慷慨</div>
+			</div>
+			
+
+			<div class="pig pig-right">
+				<div class="tail_left"></div>
+				<div class="tail_right"></div>
+				<div class="tail_blank"></div>
+				<div class="tail_middle"></div>
+				<div class="tail_circle"></div>
+
+				<div class="pig_shadow"></div>
+
+				<div class="left_foot"></div>
+				<div class="left_foot right_foot"></div>
+
+				<div class="left_shoes"></div>
+				<div class="left_shoes right_shoes"></div>
+
+				<div>
+					<div class="hand_left_top"></div>
+					<div class="hand_left_bottom"></div>
+					<div class="hand_left_middle"></div>
+				</div>
+
+				<div class="pig_body_bottom"></div>
+
+				<div>
+					<div class="hand_right_top"></div>
+					<div class="hand_right_bottom"></div>
+					<div class="hand_right_middle"></div>
+				</div>
+
+				<div>
+					<div class="ear_left"></div>
+					<div class="ear_right"></div>
+
+					<div class="pig_head">
+						<div class="pig_head_white_left_bottom"></div>
+			        </div>
+			        <div class="pig_head_white_left_top"></div>
+					<div class="pig_nose"></div>
+
+					<div class="pig_jaw"></div>
+					<div class="pig_jaw_right"></div>
+					<div class="pig_nose_bottom"></div>
+					
+
+					<div class="nose_kong_left"></div>
+					<div class="nose_kong_right"></div>
+
+					<div class="left_eye">
+						<div class="left_eye_bg"></div>
+						<div class="left_eye_ball"></div>
+						<div class="left_eye_border"></div>
+					</div>
+
+					<div class="right_eye">
+						<div class="right_eye_bg"></div>
+						<div class="right_eye_ball"></div>
+						<div class="right_eye_border"></div>
+					</div>
+
+					<div class="mouth">
+						<div class="mouth_bottom"></div>
+						<div class="mouth_middle"></div>
+						<div class="mouth_top"></div>
+					</div>
+					<div class="face"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 6格子 -->
+		<div class="main">
+			<div>I</div>
+			<div>L</div>
+			<div>O</div>
+			<div>V</div>
+			<div>E</div>
+			<div>Y</div>
+			
+		</div>
+		<div class="main main1">
+			<div>猪</div>
+			<div>猪</div>
+			<div>妹</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// 设置数量
+	const Num = 100;
+
+	// 获取元素
+	let dom = document.getElementById('all_h')
+	//获取屏幕高度与宽度
+	let clientWidth = window.innerWidth - 30;
+	let clientHeight = window.innerHeight - 100;
+
+	//获取随机数
+	function randomNum(num){
+		return parseInt(Math.random()*num,10)>num?0:parseInt(Math.random()*num,10); 
+	}
+	// 生成html
+	function createHtml(width,height){
+		var el =document. createElement("div")
+		el.style.top = (height+"px");
+		el.style.left = (width+"px");
+		el.classList.add("com-heart");  
+		el.classList.add("heart");
+		el.style.animationDelay = parseInt(Math.random()*2000,10) + "ms";
+
+		return el;
+	}
+	//画
+	function draw(){
+		for(let i = 0; i < Num; i++){
+			setTimeout(()=>{
+				// 使用append
+				let el = createHtml(randomNum(clientWidth),randomNum(clientHeight));
+				dom.appendChild(el);
+			},2000)
+		}	
+	}
+	draw()
+</script>
+</html>
